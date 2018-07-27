@@ -32,4 +32,9 @@ Record_Store.prototype.books = function () {
   return result;
 };
 
+Record_Store.prototype.find = function(genre){
+  let result = this.inventory.filter(function(item){ return item.genre === genre});
+  return result;
+}
+
 module.exports = Record_Store

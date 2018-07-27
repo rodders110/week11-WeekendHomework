@@ -9,6 +9,7 @@ describe("record_store",function(){
   beforeEach(function(){
     record1 = new Record ('Alice Cooper', 'Welcome to my Nightmare', 'rock', 12.00);
     record2 = new Record('George Ezra', 'Staying at Tamaras', 'pop', 12.99);
+    record3 = new Record('James Arthur', 'back from the egde', 'pop', 13.99);
     record_store = new Record_Store("Steve's Rad Records", "Glasgow");
   });
 
@@ -52,4 +53,12 @@ describe("record_store",function(){
     record_store.add(record2);
     assert.strictEqual(record_store.books(), "Cash: £200, Stock: £24.99");
   })
+
+  it('Should be able to filter records by genre', function(){
+    record_store.add(record1);
+    record_store.add(record2);
+    record_store.add(record3);
+    assert.deepStrictEqual(record_store.find("pop"), [record2, record3]);
+
+  });
 });
