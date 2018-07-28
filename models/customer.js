@@ -18,8 +18,14 @@ Customer.prototype.sell = function(record){
     _.remove(this.collection, function(item){return item.record_title === record.record_title});
 }
 
-Customer.prototype.collectionValue = function(){
-    return Math.round((_.sumBy(this.collection, 'price'))*100)/100;
+Customer.prototype.collectionValue = function(genre){
+    if(genre === 'all'){
+        return Math.round((_.sumBy(this.collection, 'price'))*100)/100;
+    }else{
+        let sortedCollection = this.collection.filter(function(item){return item.genre === genre});
+        return Math.round((_.sumBy(sortedCollection, 'price'))*100)/100;
+    }
+    
 }
 
 

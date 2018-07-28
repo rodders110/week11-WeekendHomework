@@ -53,7 +53,15 @@ describe("customer", function(){
       customer.buy(record2);
       customer.buy(record3);
       assert.strictEqual(customer.collection.length, 3);
-      assert.deepEqual(customer.collectionValue(), 38.98);
+      assert.deepEqual(customer.collectionValue('all'), 38.98);
 
+  });
+
+  it('Should be able to view total value of a genre in the collection', function(){
+      customer.cash = 200;
+      customer.buy(record1);
+      customer.buy(record2);
+      customer.buy(record3);
+      assert.deepEqual(customer.collectionValue('pop'), 26.98);
   });
 });
