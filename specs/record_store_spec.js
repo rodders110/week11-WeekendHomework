@@ -4,6 +4,8 @@ const Record_Store = require("../models/record_store");
 
 describe("record_store",function(){
   let record1;
+  let record2;
+  let record3;
   let record_store;
 
   beforeEach(function(){
