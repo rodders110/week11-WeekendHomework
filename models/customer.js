@@ -32,5 +32,14 @@ Customer.prototype.mostValuable = function(){
     return _.maxBy(this.collection, 'price');
 }
 
+Customer.prototype.sort = function(option){
+
+    if(option === 'asc'){
+        return _.sortBy(this.collection, 'price');
+    }else if(option === 'des'){
+        return _.reverse(_.sortBy(this.collection, 'price'));
+    }
+}
+
 
 module.exports = Customer;

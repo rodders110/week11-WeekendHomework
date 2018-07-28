@@ -72,4 +72,13 @@ describe("customer", function(){
       customer.buy(record3);
       assert.deepStrictEqual(customer.mostValuable(), record3);
   });
+
+  it('Should be able to sort collecton by value', function(){
+      customer.cash = 200;
+      customer.buy(record2);
+      customer.buy(record1);
+      customer.buy(record3);
+      assert.deepStrictEqual(customer.sort('asc'), [record1, record2, record3]);
+      assert.deepStrictEqual(customer.sort('des'), [record3, record2, record1]);
+  });
 });
