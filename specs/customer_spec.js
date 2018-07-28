@@ -32,4 +32,11 @@ describe("customer", function(){
     assert.strictEqual(customer.cash, 8);
     assert.deepStrictEqual(customer.collection.length, 1);
   });
+
+  it('Should not be able to buy a record if there are not enough funds', function(){
+      customer.buy(record1);
+      customer.buy(record2);
+      assert.strictEqual(customer.cash, 8);
+      assert.deepStrictEqual(customer.collection, [record1]);
+  });
 });
