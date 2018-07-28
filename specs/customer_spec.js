@@ -64,4 +64,12 @@ describe("customer", function(){
       customer.buy(record3);
       assert.deepEqual(customer.collectionValue('pop'), 26.98);
   });
+
+  it('Should be able to view the most valuable record', function(){
+      customer.cash = 200;
+      customer.buy(record1);
+      customer.buy(record2);
+      customer.buy(record3);
+      assert.deepStrictEqual(customer.mostValuable(), record3);
+  });
 });

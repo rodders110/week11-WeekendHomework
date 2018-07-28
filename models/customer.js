@@ -28,5 +28,9 @@ Customer.prototype.collectionValue = function(genre){
     
 }
 
+Customer.prototype.mostValuable = function(){
+    return _.maxBy(this.collection, 'price');
+}
+
 
 module.exports = Customer;
