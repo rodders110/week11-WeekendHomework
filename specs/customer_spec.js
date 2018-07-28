@@ -39,4 +39,21 @@ describe("customer", function(){
       assert.strictEqual(customer.cash, 8);
       assert.deepStrictEqual(customer.collection, [record1]);
   });
+
+  it('Should be able to sell their records', function(){
+      customer.buy(record1);
+      customer.sell(record1);
+      assert.strictEqual(customer.cash, 20);
+      assert.deepStrictEqual(customer.collection, []);
+  });
+
+  it('Should be able to view the total value of their collection', function(){
+      customer.cash = 200;
+      customer.buy(record1);
+      customer.buy(record2);
+      customer.buy(record3);
+      assert.strictEqual(customer.collection.length, 3);
+      assert.deepEqual(customer.collectionValue(), 38.98);
+
+  });
 });
