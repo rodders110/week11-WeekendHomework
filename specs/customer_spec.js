@@ -15,8 +15,12 @@ describe("customer", function(){
       record1 = new Record('Alice Cooper', 'Welcome to my Nightmare', 'rock', 12.00);
       record2 = new Record('George Ezra', 'Staying at Tamaras', 'pop', 12.99);
       record3 = new Record('James Arthur', 'back from the edge', 'pop',13.99);
+      record4 = new Record('Abba', 'Greatest His', 'pop', 9.99)
       record_store = new Record_Store("Steve's Rad Records", "Glasgow");
       customer = new Customer('Colin', 20.00);
+      customer2 = new Customer('tommy', 200.00);
+      customer2.buy(record1);
+      customer2.buy(record3);
   });
 
   it('Should have name', function(){
@@ -80,5 +84,13 @@ describe("customer", function(){
       customer.buy(record3);
       assert.deepStrictEqual(customer.sort('asc'), [record1, record2, record3]);
       assert.deepStrictEqual(customer.sort('des'), [record3, record2, record1]);
+  });
+
+  it('Should be able to compare the value of their collection with another RecordCollector', function(){
+      customer.cash = 200;
+      customer.buy(record1);
+      customer.buy(record2);
+      customer.buy(record3);
+      assert.strictEqual(customer.isCollectionBetter(customer2), true);
   });
 });

@@ -41,5 +41,12 @@ Customer.prototype.sort = function(option){
     }
 }
 
+Customer.prototype.isCollectionBetter = function (collector){
+    
+    return(this.collectionValue('all') > collector.collectionValue('all'));
+    
+    
+}
+
 
 module.exports = Customer;
